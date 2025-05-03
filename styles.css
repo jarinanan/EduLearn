@@ -1,0 +1,464 @@
+.dark {
+    --card-bg: #1a1a1a;
+    --card-text: #f0f0f0;
+    --surface-bg: #121212;
+    --highlight-color: rgba(255, 255, 255, 0.05);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --inner-shadow-color: rgba(0, 0, 0, 0.7);
+}
+
+html:not(.dark) {
+    --card-bg: #e8e8e8;
+    --card-text: #333333;
+    --surface-bg: #f5f5f5;
+    --highlight-color: rgba(255, 255, 255, 1);
+    --shadow-color: rgba(0, 0, 0, 0.15);
+    --inner-shadow-color: rgba(0, 0, 0, 0.07);
+}
+
+/* Apply surface background to main containers for better contrast */
+body:not(.dark) {
+    background-color: var(--surface-bg);
+}
+
+body.dark {
+    background-color: var(--surface-bg);
+}
+
+/* Enhanced Neumorphic Elements */
+.neu-element {
+    @apply rounded-2xl transition-all duration-300;
+    background-color: var(--card-bg);
+    position: relative;
+}
+
+html:not(.dark) .neu-element {
+    box-shadow:
+        10px 10px 20px rgba(0, 0, 0, 0.1),
+        -10px -10px 20px rgba(255, 255, 255, 0.8),
+        inset 0 0 0 rgba(0, 0, 0, 0),
+        inset 0 0 0 rgba(255, 255, 255, 0);
+}
+
+.dark .neu-element {
+    box-shadow:
+        10px 10px 20px rgba(0, 0, 0, 0.5),
+        -10px -10px 20px rgba(255, 255, 255, 0.05),
+        inset 0 0 0 rgba(0, 0, 0, 0),
+        inset 0 0 0 rgba(255, 255, 255, 0);
+}
+
+/* Smaller neumorphic elements */
+.neu-element-sm {
+    @apply rounded-xl transition-all duration-300;
+    background-color: var(--card-bg);
+    position: relative;
+}
+
+html:not(.dark) .neu-element-sm {
+    box-shadow:
+        5px 5px 10px rgba(0, 0, 0, 0.1),
+        -5px -5px 10px rgba(255, 255, 255, 0.8),
+        inset 0 0 0 rgba(0, 0, 0, 0),
+        inset 0 0 0 rgba(255, 255, 255, 0);
+}
+
+.dark .neu-element-sm {
+    box-shadow:
+        5px 5px 10px rgba(0, 0, 0, 0.5),
+        -5px -5px 10px rgba(255, 255, 255, 0.05),
+        inset 0 0 0 rgba(0, 0, 0, 0),
+        inset 0 0 0 rgba(255, 255, 255, 0);
+}
+
+/* Inner shadow elements (pressed effect) */
+.neu-element-inner {
+    @apply rounded-xl transition-all duration-300;
+    background-color: var(--card-bg);
+    position: relative;
+}
+
+html:not(.dark) .neu-element-inner {
+    box-shadow:
+        inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.8),
+        0 0 0 rgba(0, 0, 0, 0),
+        0 0 0 rgba(255, 255, 255, 0);
+}
+
+.dark .neu-element-inner {
+    box-shadow:
+        inset 3px 3px 6px rgba(0, 0, 0, 0.5),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.05),
+        0 0 0 rgba(0, 0, 0, 0),
+        0 0 0 rgba(255, 255, 255, 0);
+}
+
+/* Hover effects */
+html:not(.dark) .neu-element:hover {
+    box-shadow:
+        12px 12px 24px rgba(0, 0, 0, 0.12),
+        -12px -12px 24px rgba(255, 255, 255, 0.9),
+        inset 0 0 0 rgba(0, 0, 0, 0),
+        inset 0 0 0 rgba(255, 255, 255, 0);
+}
+
+.dark .neu-element:hover {
+    box-shadow:
+        12px 12px 24px rgba(0, 0, 0, 0.6),
+        -12px -12px 24px rgba(255, 255, 255, 0.07),
+        inset 0 0 0 rgba(0, 0, 0, 0),
+        inset 0 0 0 rgba(255, 255, 255, 0);
+}
+
+html:not(.dark) .neu-element-sm:hover {
+    box-shadow:
+        6px 6px 12px rgba(0, 0, 0, 0.12),
+        -6px -6px 12px rgba(255, 255, 255, 0.9),
+        inset 0 0 0 rgba(0, 0, 0, 0),
+        inset 0 0 0 rgba(255, 255, 255, 0);
+}
+
+.dark .neu-element-sm:hover {
+    box-shadow:
+        6px 6px 12px rgba(0, 0, 0, 0.6),
+        -6px -6px 12px rgba(255, 255, 255, 0.07),
+        inset 0 0 0 rgba(0, 0, 0, 0),
+        inset 0 0 0 rgba(255, 255, 255, 0);
+}
+
+/* Enhanced pressed state */
+html:not(.dark) .neu-element-sm:active,
+html:not(.dark) .hover\:shadow-neu-light-inner:hover {
+    box-shadow:
+        inset 3px 3px 6px rgba(0, 0, 0, 0.12),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.8),
+        0 0 0 rgba(0, 0, 0, 0),
+        0 0 0 rgba(255, 255, 255, 0);
+}
+
+.dark .neu-element-sm:active,
+.dark .hover\:shadow-neu-dark-inner:hover {
+    box-shadow:
+        inset 3px 3px 6px rgba(0, 0, 0, 0.6),
+        inset -3px -3px 6px rgba(255, 255, 255, 0.05),
+        0 0 0 rgba(0, 0, 0, 0),
+        0 0 0 rgba(255, 255, 255, 0);
+}
+
+/* Add subtle border to enhance the effect */
+.neu-element,
+.neu-element-sm,
+.neu-element-inner {
+    border: 1px solid transparent;
+}
+
+html:not(.dark) .neu-element,
+html:not(.dark) .neu-element-sm,
+html:not(.dark) .neu-element-inner {
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.dark .neu-element,
+.dark .neu-element-sm,
+.dark .neu-element-inner {
+    border-color: rgba(30, 30, 30, 0.8);
+}
+
+/* Add a subtle gradient to enhance 3D effect */
+html:not(.dark) .neu-element::before,
+html:not(.dark) .neu-element-sm::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.02) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.dark .neu-element::before,
+.dark .neu-element-sm::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.2) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.flip-card {
+    perspective: 1000px;
+    height: 28rem;
+    width: 100%;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+/* Add subtle accent to cards */
+.flip-card-front::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--tw-gradient-from), var(--tw-gradient-to));
+    --tw-gradient-from: #4f46e5;
+    --tw-gradient-to: #4338ca;
+    z-index: 2;
+}
+
+/* Enhanced form inputs */
+.neu-element input,
+.neu-element select {
+    background-color: transparent;
+}
+
+/* Card hover effect highlighting */
+html:not(.dark) .flip-card:hover .flip-card-inner .flip-card-front {
+    box-shadow:
+        15px 15px 30px rgba(0, 0, 0, 0.15),
+        -15px -15px 30px rgba(255, 255, 255, 1);
+}
+
+.dark .flip-card:hover .flip-card-inner .flip-card-front {
+    box-shadow:
+        15px 15px 30px rgba(0, 0, 0, 0.7),
+        -15px -15px 30px rgba(255, 255, 255, 0.05);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #2d2d2d;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #555;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+
+.swiper {
+    position: relative;
+    overflow: hidden !important;
+    margin: 3rem 3rem !important;
+}
+
+
+
+.swiper-button-next,
+.swiper-button-prev {
+    position: absolute;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 3rem !important;
+    height: 3rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 10 !important;
+    cursor: pointer;
+    color: var(--card-text) !important;
+    transition: all 0.3s ease;
+    background-color: var(--card-bg) !important;
+    border-radius: 50% !important;
+}
+
+/* Position the buttons correctly */
+.swiper-button-prev {
+    left: 10px !important;
+    margin-left: 0 !important;
+}
+
+
+.swiper-button-next {
+    right: 10px !important;
+    /* Changed from negative margin to positive position */
+    margin-right: 0 !important;
+}
+
+/* Make the buttons more visible on hover */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* Add better shadow effects to navigation buttons */
+html:not(.dark) .swiper-button-next,
+html:not(.dark) .swiper-button-prev {
+    box-shadow:
+        5px 5px 10px rgba(0, 0, 0, 0.1),
+        -5px -5px 10px rgba(255, 255, 255, 0.8);
+}
+
+.dark .swiper-button-next,
+.dark .swiper-button-prev {
+    box-shadow:
+        5px 5px 10px rgba(0, 0, 0, 0.6),
+        -5px -5px 10px rgba(255, 255, 255, 0.05);
+}
+
+
+.swiper-button-disabled {
+    opacity: 0.35 !important;
+    cursor: auto !important;
+    pointer-events: none !important;
+}
+
+/* Make pagination more visible */
+.swiper-pagination {
+    position: relative;
+    bottom: 0 !important;
+    margin-top: 1.5rem !important;
+}
+
+.swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+    background: var(--card-text) !important;
+    opacity: 0.3 !important;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1 !important;
+    background: var(--primary-600, #4f46e5) !important;
+    transform: scale(1.2) !important;
+}
+
+@media (max-width: 768px) {
+
+    .swiper,
+    .testimonialSwiper,
+    .trendsSwiper {
+        margin: 0 2rem !important;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+
+    .swiper-button-prev {
+        margin-left: -1.25rem !important;
+    }
+
+    .swiper-button-next {
+        margin-right: -1.25rem !important;
+    }
+}
+
+@media (max-width: 640px) {
+
+    .swiper,
+    .testimonialSwiper,
+    .trendsSwiper {
+        margin: 0 1.5rem !important;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+
+    .swiper-button-prev {
+        margin-left: -1rem !important;
+    }
+
+    .swiper-button-next {
+        margin-right: -1rem !important;
+    }
+
+    .swiper-button-next i,
+    .swiper-button-prev i {
+        font-size: 0.875rem !important;
+    }
+}
+
+/* Enhanced focus states for accessibility */
+.neu-element:focus,
+.neu-element-sm:focus,
+button:focus,
+a:focus,
+input:focus,
+select:focus {
+    outline: 2px solid var(--primary-600, #4f46e5);
+    outline-offset: 2px;
+}
+
+.text-gray-600,
+.dark .text-gray-300 {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.dark .text-gray-300,
+.dark .text-gray-400 {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.dark .text-gray-400 {
+    color: rgba(229, 231, 235, 0.9) !important;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    content: none !important;
+    /* This completely removes the default arrows */
+}
