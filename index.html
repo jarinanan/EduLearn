@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPlatform - Premium Learning Experience</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- SwiperJS for carousels -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#121212',
+                        darker: '#0a0a0a',
+                        light: '#f8f8f8',
+                        lighter: '#ffffff',
+                        primary: {
+                            DEFAULT: '#4361ee',
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            200: '#c7d2fe',
+                            300: '#a5b4fc',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                            950: '#1e1b4b',
+                        },
+                        secondary: {
+                            DEFAULT: '#ff9f1c',
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                            950: '#451a03',
+                        },
+                    },
+                    boxShadow: {
+                        'neu-light': '8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff',
+                        'neu-dark': '8px 8px 16px #0d0d0d, -8px -8px 16px #1a1a1a',
+                        'neu-light-sm': '4px 4px 8px #d1d1d1, -4px -4px 8px #ffffff',
+                        'neu-dark-sm': '4px 4px 8px #0d0d0d, -4px -4px 8px #1a1a1a',
+                        'neu-light-inner': 'inset 4px 4px 8px #d1d1d1, inset -4px -4px 8px #ffffff',
+                        'neu-dark-inner': 'inset 4px 4px 8px #0d0d0d, inset -4px -4px 8px #1a1a1a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body class="font-sans antialiased text-gray-900 dark:text-white bg-light dark:bg-dark transition-colors duration-300">
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm hidden" onclick="toggleMobileMenu()">
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobileMenuPanel"
+        class="fixed top-0 left-0 w-4/5 max-w-xs h-full bg-light dark:bg-dark z-50 transform -translate-x-full transition-transform duration-300 overflow-y-auto shadow-lg">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold text-primary-600">EduPlatform</h2>
+                <button onclick="toggleMobileMenu()"
+                    class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <nav class="mb-8">
+                <ul class="space-y-4">
+                    <li>
+                        <a href="#home" onclick="toggleMobileMenu()"
+                            class="block p-3 rounded-xl hover:bg-primary-100 hover:text-primary-700 dark:hover:bg-primary-900 dark:hover:text-primary-300 transition-colors">
+                            <i class="fas fa-home mr-3"></i> Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#courses" onclick="toggleMobileMenu()"
+                            class="block p-3 rounded-xl hover:bg-primary-100 hover:text-primary-700 dark:hover:bg-primary-900 dark:hover:text-primary-300 transition-colors">
+                            <i class="fas fa-graduation-cap mr-3"></i> Courses
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#testimonials" onclick="toggleMobileMenu()"
+                            class="block p-3 rounded-xl hover:bg-primary-100 hover:text-primary-700 dark:hover:bg-primary-900 dark:hover:text-primary-300 transition-colors">
+                            <i class="fas fa-comment-dots mr-3"></i> Testimonials
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#trends" onclick="toggleMobileMenu()"
+                            class="block p-3 rounded-xl hover:bg-primary-100 hover:text-primary-700 dark:hover:bg-primary-900 dark:hover:text-primary-300 transition-colors">
+                            <i class="fas fa-chart-line mr-3"></i> Trends
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#about" onclick="toggleMobileMenu()"
+                            class="block p-3 rounded-xl hover:bg-primary-100 hover:text-primary-700 dark:hover:bg-primary-900 dark:hover:text-primary-300 transition-colors">
+                            <i class="fas fa-info-circle mr-3"></i> About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" onclick="toggleMobileMenu()"
+                            class="block p-3 rounded-xl hover:bg-primary-100 hover:text-primary-700 dark:hover:bg-primary-900 dark:hover:text-primary-300 transition-colors">
+                            <i class="fas fa-envelope mr-3"></i> Contact
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="space-y-4">
+                <button onclick="toggleDarkMode()"
+                    class="w-full p-3 neu-element-sm flex items-center justify-center gap-2">
+                    <i id="darkModeIconMobile" class="fas fa-moon"></i>
+                    <span id="darkModeTextMobile">Dark Mode</span>
+                </button>
+                <a href="#"
+                    class="block w-full p-3 text-center rounded-xl bg-primary-600 hover:bg-primary-700 text-white transition-colors">
+                    Sign In
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-40 bg-light/95 dark:bg-dark/95 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center">
+                    <span class="text-2xl font-bold text-primary-600 dark:text-primary-400">EduPlatform</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Home</a>
+                    <a href="#courses"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Courses</a>
+                    <a href="#testimonials"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Testimonials</a>
+                    <a href="#trends"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Trends</a>
+                    <a href="#contact"
+                        class="text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Desktop Right Actions -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="toggleDarkMode()"
+                        class="p-2 rounded-full neu-element-sm flex items-center justify-center"
+                        aria-label="Toggle dark mode">
+                        <i id="darkModeIcon" class="fas fa-moon"></i>
+                    </button>
+                    <a href="#"
+                        class="px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Sign
+                        In</a>
+                    <a href="#"
+                        class="px-4 py-2 rounded-xl bg-primary-600 hover:bg-primary-700 text-white transition-colors">Register</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()"
+                    class="md:hidden p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
+                    aria-label="Menu">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative py-16 md:py-24 bg-light dark:bg-dark overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Hero Text -->
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Elevate Your Skills with<br>
+                        <span class="text-primary-600 dark:text-primary-400">Premium Education</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto md:mx-0">
+                        We believe in empowering learners through practical, hands-on education designed for today's
+                        digital world.
+                    </p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <a href="#courses"
+                            class="px-8 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white transition-colors flex items-center gap-2">
+                            <span>Explore Courses</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#"
+                            class="px-8 py-3 neu-element-sm hover:shadow-neu-light-inner dark:hover:shadow-neu-dark-inner transition-all flex items-center gap-2">
+                            <i class="fas fa-play text-primary-600 dark:text-primary-400"></i>
+                            <span>Watch Demo</span>
+                        </a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-4 mt-12">
+                        <div class="neu-element p-4 text-center">
+                            <h3 class="text-2xl md:text-3xl font-bold text-primary-600 dark:text-primary-400">50+</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Courses</p>
+                        </div>
+                        <div class="neu-element p-4 text-center">
+                            <h3 class="text-2xl md:text-3xl font-bold text-primary-600 dark:text-primary-400">24k+</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Students</p>
+                        </div>
+                        <div class="neu-element p-4 text-center">
+                            <h3 class="text-2xl md:text-3xl font-bold text-primary-600 dark:text-primary-400">99%</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="order-first md:order-last">
+                    <div class="neu-element p-6 relative">
+                        <div class="absolute -top-6 -right-6 neu-element p-4 rounded-xl rotate-6 z-10 hidden md:block">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-certificate text-secondary-500 text-xl"></i>
+                                <span class="font-medium">Certified Courses</span>
+                            </div>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Students learning" class="w-full h-full object-cover rounded-xl">
+
+                        <div
+                            class="absolute -bottom-6 -left-6 neu-element p-4 rounded-xl -rotate-6 z-10 hidden md:block">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-rocket text-primary-600 dark:text-primary-400 text-xl"></i>
+                                <span class="font-medium">Career Growth</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Trusted Companies -->
+            <div class="mt-20 text-center">
+                <p class="uppercase tracking-wider text-gray-500 dark:text-white-400 mb-6">
+                    Trusted by leading companies
+                </p>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft"
+                        class="h-8 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google"
+                        class="h-8 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="netflix"
+                        class="h-8 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Meta"
+                        class="h-8 opacity-70 hover:opacity-100 transition-opacity">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM"
+                        class="h-8 opacity-70 hover:opacity-100 transition-opacity">
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-16 md:py-24 bg-light dark:bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span
+                    class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 text-sm font-medium mb-3">Our
+                    Courses</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Explore Premium Courses</h2>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Dive into our curated collection of industry-leading courses designed to help you master new skills
+                    and advance your career.
+                </p>
+            </div>
+
+            <!-- Filtering and Search -->
+            <div class="mb-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Search Input -->
+                <div class="neu-element flex items-center p-2">
+                    <i class="fas fa-search px-3 text-gray-400"></i>
+                    <input id="searchInput" type="text" placeholder="Search courses..."
+                        class="w-full p-2 bg-transparent border-none focus:outline-none">
+                </div>
+
+                <!-- Category Filter -->
+                <div class="neu-element relative p-2">
+                    <select id="categoryFilter"
+                        class="w-full p-2 bg-transparent border-none focus:outline-none appearance-none cursor-pointer">
+                        <option value="all">All Categories</option>
+                        <option value="development">Development</option>
+                        <option value="design">Design</option>
+                        <option value="business">Business</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="music">Music</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </div>
+                </div>
+
+                <!-- Sort Options -->
+                <div class="neu-element relative p-2">
+                    <select id="sortFilter"
+                        class="w-full p-2 bg-transparent border-none focus:outline-none appearance-none cursor-pointer">
+                        <option value="default">Sort by: Default</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="rating-desc">Rating: High to Low</option>
+                        <option value="newest">Newest First</option>
+                        <option value="popularity">Most Popular</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                        <i class="fas fa-chevron-down text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Courses Container - Will be populated by JavaScript -->
+            <div id="coursesContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Courses will be dynamically inserted here -->
+                <div class="text-center py-12">
+                    <i class="fas fa-spinner fa-spin text-4xl text-primary-500 mb-4"></i>
+                    <p>Loading courses...</p>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button id="loadMoreBtn"
+                    class="px-8 py-3 neu-element-sm hover:shadow-neu-light-inner dark:hover:shadow-neu-dark-inner transition-all flex items-center gap-2 mx-auto">
+                    <span>Load More Courses</span>
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 md:py-24 bg-light dark:bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span
+                    class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 text-sm font-medium mb-3">Testimonials</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Students Say</h2>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Discover how EduPlatform has transformed the careers and lives of our students worldwide.
+                </p>
+            </div>
+
+            <!-- Testimonial Slider -->
+            <div class="swiper testimonialSwiper neu-element p-2 rounded-2xl overflow-hidden">
+                <div class="swiper-wrapper" id="testimonialsContainer">
+                    <!-- Testimonials will be dynamically inserted here -->
+                    <div class="swiper-slide">
+                        <div class="flex justify-center items-center h-full">
+                            <i class="fas fa-spinner fa-spin text-4xl text-primary-500"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-pagination mt-6"></div>
+
+                <!-- Navigation Buttons -->
+                <div
+                    class="swiper-button-next after:content-[''] neu-element-sm w-12 h-12 flex items-center justify-center text-primary-600 dark:text-primary-400">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div
+                    class="swiper-button-prev after:content-[''] neu-element-sm w-12 h-12 flex items-center justify-center text-primary-600 dark:text-primary-400">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trends Section -->
+    <section id="trends" class="py-16 md:py-24 bg-light dark:bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span
+                    class="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400 text-sm font-medium mb-3">Industry
+                    Insights</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Current Trends</h2>
+                <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                    Stay updated with the latest developments in technology and education.
+                </p>
+            </div>
+
+            <!-- Trends Container -->
+            <div class="swiper trendsSwiper neu-element p-2 rounded-2xl overflow-hidden">
+                <div class="swiper-wrapper" id="trendsContainer">
+                    <!-- Trends will be dynamically inserted here -->
+                    <div class="swiper-slide">
+                        <div class="flex justify-center items-center h-full">
+                            <i class="fas fa-spinner fa-spin text-4xl text-primary-500"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-pagination mt-6"></div>
+
+                <!-- Navigation Buttons -->
+                <div
+                    class="swiper-button-next after:content-[''] neu-element-sm w-12 h-12 flex items-center justify-center text-primary-600 dark:text-primary-400">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <div
+                    class="swiper-button-prev after:content-[''] neu-element-sm w-12 h-12 flex items-center justify-center text-primary-600 dark:text-primary-400">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-16 md:py-24 bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Learning Journey?</h2>
+            <p class="text-xl max-w-2xl mx-auto mb-10 text-white/90">
+                Join thousands of students worldwide and take the first step toward mastering new skills.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#courses"
+                    class="px-8 py-3 bg-white text-primary-600 hover:bg-gray-100 rounded-xl shadow-lg hover:shadow-xl transition-all">
+                    Browse Courses
+                </a>
+                <a href="#"
+                    class="px-8 py-3 bg-transparent border-2 border-white hover:bg-white/10 rounded-xl transition-all">
+                    Free Trial
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-light dark:bg-dark pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-6">EduPlatform</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Empowering learners through practical, hands-on education designed for the modern world.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="neu-element-sm p-2 rounded-full flex items-center justify-center"
+                            aria-label="Facebook">
+                            <i class="fab fa-facebook-f text-primary-600 dark:text-primary-400"></i>
+                        </a>
+                        <a href="#" class="neu-element-sm p-2 rounded-full flex items-center justify-center"
+                            aria-label="Twitter">
+                            <i class="fab fa-twitter text-primary-600 dark:text-primary-400"></i>
+                        </a>
+                        <a href="#" class="neu-element-sm p-2 rounded-full flex items-center justify-center"
+                            aria-label="Instagram">
+                            <i class="fab fa-instagram text-primary-600 dark:text-primary-400"></i>
+                        </a>
+                        <a href="#" class="neu-element-sm p-2 rounded-full flex items-center justify-center"
+                            aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in text-primary-600 dark:text-primary-400"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#"
+                                class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">About
+                                Us</a></li>
+                        <li><a href="#"
+                                class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Our
+                                Courses</a></li>
+                        <li><a href="#"
+                                class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Instructors</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Testimonials</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Contact
+                                Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categories -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Categories</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#"
+                                class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Development</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Design</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Business</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Marketing</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Music</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Stay Updated</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Subscribe to our newsletter for the latest updates and offers.
+                    </p>
+                    <form class="space-y-3">
+                        <div class="neu-element p-2 flex items-center">
+                            <input type="email" placeholder="Your email address"
+                                class="w-full p-2 bg-transparent border-none focus:outline-none" required>
+                        </div>
+                        <button type="submit"
+                            class="w-full py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-xl transition-colors">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div
+                class="pt-8 border-t border-gray-200 dark:border-gray-700 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2025 EduPlatform. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#"
+                        class="text-gray-600 dark:text-gray-400 text-sm hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Privacy
+                        Policy</a>
+                    <a href="#"
+                        class="text-gray-600 dark:text-gray-400 text-sm hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Terms
+                        of Service</a>
+                    <a href="#"
+                        class="text-gray-600 dark:text-gray-400 text-sm hover:text-primary-600 dark:hover:text-primary-400 transition-colors">Support</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn"
+        class="fixed bottom-8 right-8 neu-element-sm p-3 rounded-full z-30 opacity-0 invisible transition-all"
+        onclick="scrollToTop()">
+        <i class="fas fa-arrow-up text-primary-600 dark:text-primary-400"></i>
+    </button>
+
+    <!-- Scripts -->
+    <!-- SwiperJS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
